@@ -1,23 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   parse.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: healeksa <healeksa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/14 18:50:23 by healeksa          #+#    #+#             */
-/*   Updated: 2024/05/17 19:55:31 by healeksa         ###   ########.fr       */
+/*   Created: 2024/05/16 21:42:11 by healeksa          #+#    #+#             */
+/*   Updated: 2024/05/16 22:04:51 by healeksa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-int	main(int argc, char **argv)
+void	check_arg(int argc, char **argv)
 {
-	void	*mlx;
-	void	*mlx_win;
+	if (argc != 2)
+		exit(1);
+}
 
-	mlx = mlx_init();
-	mlx_win = mlx_new_window(mlx, 800, 800, "Hello world!");
-	mlx_loop(mlx);
+void	parse(int argc, char **argv)
+{
+	check_arg(argc, argv);
 }
