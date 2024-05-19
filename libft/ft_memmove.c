@@ -1,29 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long.h                                          :+:      :+:    :+:   */
+/*   ft_memmove.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: healeksa <healeksa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/16 21:43:21 by healeksa          #+#    #+#             */
-/*   Updated: 2024/05/19 21:55:30 by healeksa         ###   ########.fr       */
+/*   Created: 2024/01/27 12:59:37 by healeksa          #+#    #+#             */
+/*   Updated: 2024/05/19 18:32:33 by healeksa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SO_LONG_H
-# define SO_LONG_H
+#include "../includes/libft.h"
 
-# include "get_next_line.h"
-# include "libft.h"
-# include "mlx.h"
-# include <fcntl.h>
-# include <stdio.h>
-# include <stdlib.h>
-# include <unistd.h>
+void	*ft_memmove(void *dest, const void *src, size_t n)
+{
+	size_t	i;
 
-void	parse(int argc, char **argv);
-
-// UTILS
-void	throw_error(char *txt);
-
-#endif
+	i = 0;
+	if (!dest && !src)
+		return (dest);
+	if (dest > src)
+	{
+		while (n > 0)
+		{
+			n--;
+			((char *)dest)[n] = ((char *)src)[n];
+		}
+	}
+	else
+	{
+		while (i < n)
+		{
+			((char *)dest)[i] = ((char *)src)[i];
+			i++;
+		}
+	}
+	return ((void *)dest);
+}

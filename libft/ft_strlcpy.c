@@ -1,29 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long.h                                          :+:      :+:    :+:   */
+/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: healeksa <healeksa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/16 21:43:21 by healeksa          #+#    #+#             */
-/*   Updated: 2024/05/19 21:55:30 by healeksa         ###   ########.fr       */
+/*   Created: 2024/01/26 16:23:47 by healeksa          #+#    #+#             */
+/*   Updated: 2024/05/19 18:32:33 by healeksa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SO_LONG_H
-# define SO_LONG_H
+#include "../includes/libft.h"
 
-# include "get_next_line.h"
-# include "libft.h"
-# include "mlx.h"
-# include <fcntl.h>
-# include <stdio.h>
-# include <stdlib.h>
-# include <unistd.h>
+size_t	ft_strlcpy(char *dst, const char *src, size_t n)
+{
+	size_t	i;
 
-void	parse(int argc, char **argv);
-
-// UTILS
-void	throw_error(char *txt);
-
-#endif
+	i = 0;
+	if (n > 0)
+	{
+		while (src[i] && i < (n - 1))
+		{
+			dst[i] = src[i];
+			i++;
+		}
+		dst[i] = '\0';
+	}
+	return (ft_strlen(src));
+}

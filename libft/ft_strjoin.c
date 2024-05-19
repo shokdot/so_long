@@ -1,22 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: healeksa <healeksa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/14 18:50:23 by healeksa          #+#    #+#             */
-/*   Updated: 2024/05/19 22:28:18 by healeksa         ###   ########.fr       */
+/*   Created: 2024/01/28 17:27:35 by healeksa          #+#    #+#             */
+/*   Updated: 2024/05/19 18:32:33 by healeksa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "../includes/libft.h"
 
-int	main(int argc, char **argv)
+char	*ft_strjoin(char const *s1, char const *s2)
 {
-	parse(argc, argv);
-	while (1)
+	char	*res;
+	size_t	i;
+	size_t	j;
+
+	if (!s1 || !s2)
+		return (NULL);
+	i = 0;
+	j = 0;
+	res = (char *)malloc(sizeof(*s1) * (ft_strlen(s1) + ft_strlen(s2) + 1));
+	if (!res)
+		return (NULL);
+	while (s1[i] != '\0')
 	{
-		/* code */
+		res[j++] = s1[i];
+		i++;
 	}
+	i = 0;
+	while (s2[i] != '\0')
+	{
+		res[j++] = s2[i];
+		i++;
+	}
+	res[j] = '\0';
+	return (res);
 }

@@ -1,29 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long.h                                          :+:      :+:    :+:   */
+/*   get_next_line.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: healeksa <healeksa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/16 21:43:21 by healeksa          #+#    #+#             */
-/*   Updated: 2024/05/19 21:55:30 by healeksa         ###   ########.fr       */
+/*   Created: 2024/02/11 15:05:52 by healeksa          #+#    #+#             */
+/*   Updated: 2024/05/07 21:59:58 by healeksa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SO_LONG_H
-# define SO_LONG_H
-
-# include "get_next_line.h"
-# include "libft.h"
-# include "mlx.h"
+#ifndef GET_NEXT_LINE_H
+# define GET_NEXT_LINE_H
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 4
+# endif
 # include <fcntl.h>
 # include <stdio.h>
 # include <stdlib.h>
 # include <unistd.h>
 
-void	parse(int argc, char **argv);
-
-// UTILS
-void	throw_error(char *txt);
+char	*get_next_line(int fd);
+int		ft_strchr_line(const char *str, int c);
+char	*ft_strjoin_line(char *s1, char *s2);
+int		ft_strlen_line(const char *str);
+char	*ft_substr_line(char const *s, unsigned int start, size_t len);
 
 #endif
