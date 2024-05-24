@@ -6,19 +6,24 @@
 /*   By: healeksa <healeksa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/28 17:27:35 by healeksa          #+#    #+#             */
-/*   Updated: 2024/05/19 18:32:33 by healeksa         ###   ########.fr       */
+/*   Updated: 2024/05/24 23:38:04 by healeksa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/libft.h"
 
-char	*ft_strjoin(char const *s1, char const *s2)
+char	*ft_strjoin(char *s1, char *s2)
 {
 	char	*res;
 	size_t	i;
 	size_t	j;
 
-	if (!s1 || !s2)
+	if (!s1)
+	{
+		s1 = malloc(1);
+		s1[0] = 0;
+	}
+	if (!s2)
 		return (NULL);
 	i = 0;
 	j = 0;
@@ -37,5 +42,7 @@ char	*ft_strjoin(char const *s1, char const *s2)
 		i++;
 	}
 	res[j] = '\0';
+	free((void *)s1);
+	free((void *)s2);
 	return (res);
 }

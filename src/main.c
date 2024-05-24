@@ -6,7 +6,7 @@
 /*   By: healeksa <healeksa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/14 18:50:23 by healeksa          #+#    #+#             */
-/*   Updated: 2024/05/19 22:28:18 by healeksa         ###   ########.fr       */
+/*   Updated: 2024/05/24 23:32:03 by healeksa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,7 @@
 
 int	main(int argc, char **argv)
 {
-	parse(argc, argv);
-	while (1)
-	{
-		/* code */
-	}
+	t_game	game;
+
+	parse(argc, argv, &game);
 }
