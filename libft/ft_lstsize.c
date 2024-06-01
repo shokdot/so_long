@@ -6,11 +6,11 @@
 /*   By: healeksa <healeksa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/30 12:07:30 by healeksa          #+#    #+#             */
-/*   Updated: 2024/05/19 18:32:33 by healeksa         ###   ########.fr       */
+/*   Updated: 2024/01/30 12:10:10 by healeksa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/libft.h"
+#include "libft.h"
 
 int	ft_lstsize(t_list *lst)
 {

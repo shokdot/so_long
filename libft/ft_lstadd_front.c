@@ -6,11 +6,11 @@
 /*   By: healeksa <healeksa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/30 12:00:21 by healeksa          #+#    #+#             */
-/*   Updated: 2024/05/19 18:32:33 by healeksa         ###   ########.fr       */
+/*   Updated: 2024/05/31 18:28:42 by healeksa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/libft.h"
+#include "libft.h"
 
 void	ft_lstadd_front(t_list **lst, t_list *new)
 {
@@ -21,6 +21,7 @@ void	ft_lstadd_front(t_list **lst, t_list *new)
 		*lst = new;
 		return ;
 	}
+	(*lst)->prev = new;
 	new->next = *lst;
 	*lst = new;
 }

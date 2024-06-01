@@ -6,11 +6,11 @@
 /*   By: healeksa <healeksa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/27 17:37:04 by healeksa          #+#    #+#             */
-/*   Updated: 2024/05/19 18:32:33 by healeksa         ###   ########.fr       */
+/*   Updated: 2024/01/27 18:12:43 by healeksa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/libft.h"
+#include "libft.h"
 
 void	ft_putnbr_fd(int n, int fd)
 {

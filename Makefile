@@ -2,10 +2,13 @@ NAME = so_long
 
 SRC_DIR = src
 OBJ_DIR = obj
-SUBDIRS = parsing utils gnl
+SUBDIRS = parsing utils
+
 MLX_LIB = ./mlx
 LIBFT = ./libft
-INCLUDES = ./includes
+
+INCLUDES = -I includes
+HEADER = $(wildcard includes/*.c)
 
 SRCDIRS = $(addprefix $(SRC_DIR)/, $(SUBDIRS))
 SRCS = $(notdir $(foreach dir, $(SRCDIRS), $(wildcard $(dir)/*.c))) $(notdir $(SRC_DIR)/main.c)
@@ -14,11 +17,11 @@ OBJ = $(patsubst %.c, $(OBJ_DIR)/%.o, $(SRCS))
 LIBFLAGS = -L mlx -L libft -l mlx -l ft
 MLXFLAGS = -framework OpenGL -framework AppKit
 #CFLAGS = -Wall -Wextra -Werror
-CFLAGS = -g3 -I
+CFLAGS = -g3
 
-GREEN = \033[0;32m
-RED = \033[0;31m
-RESET = \033[0m
+GREEN = \x1b[32;1m
+RED = \x1b[31;1m
+RESET = \x1b[0m
 
 all: $(NAME)
 
@@ -29,9 +32,9 @@ libs:
 	@make -C $(LIBFT)
 #make -C $(MLX_LIB)
 
-$(NAME): $(OBJ_DIR) $(OBJ) Makefile $(INCLUDES)
+$(NAME): $(OBJ_DIR) $(OBJ) Makefile $(HEADER)
 	@$(CC) $(CFLAGS) $(INCLUDES) $(LIBFLAGS) $(MLX_FLAGS) $(OBJ) -o $(NAME)
-	@echo "$(GREEN)Compilation done$(RESET)"
+	@echo "$(GREEN) So_Long is waiting for you!$(RESET)"
 
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c $(HEADER) Makefile
 	@$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
@@ -46,7 +49,7 @@ clean:
 fclean: clean
 	@$(RM) $(NAME)
 	@make fclean -C $(LIBFT)
-	@echo "$(RED)Deleting all files$(RESET)"
+	@echo "$(RED) Deleting so_long!$(RESET)"
 
 re: fclean all
 

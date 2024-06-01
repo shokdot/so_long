@@ -6,11 +6,11 @@
 /*   By: healeksa <healeksa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/26 16:54:09 by healeksa          #+#    #+#             */
-/*   Updated: 2024/05/19 18:32:33 by healeksa         ###   ########.fr       */
+/*   Updated: 2024/01/26 16:57:44 by healeksa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/libft.h"
+#include "libft.h"
 
 int	ft_strncmp(const char *str1, const char *str2, size_t n)
 {

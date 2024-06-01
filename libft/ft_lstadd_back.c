@@ -6,14 +6,16 @@
 /*   By: healeksa <healeksa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/30 12:21:07 by healeksa          #+#    #+#             */
-/*   Updated: 2024/05/19 18:32:33 by healeksa         ###   ########.fr       */
+/*   Updated: 2024/05/30 21:55:25 by healeksa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/libft.h"
+#include "libft.h"
 
 void	ft_lstadd_back(t_list **lst, t_list *new)
 {
+	t_list	*last;
+
 	if (!new || !lst)
 		return ;
 	if (!*lst)
@@ -21,5 +23,7 @@ void	ft_lstadd_back(t_list **lst, t_list *new)
 		*lst = new;
 		return ;
 	}
-	ft_lstlast(*lst)->next = new;
+	last = ft_lstlast(*lst);
+	new->prev = last;
+	last->next = new;
 }

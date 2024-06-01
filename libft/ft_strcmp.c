@@ -5,12 +5,10 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: healeksa <healeksa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/19 18:30:21 by healeksa          #+#    #+#             */
-/*   Updated: 2024/05/19 18:32:33 by healeksa         ###   ########.fr       */
+/*   Created: 2024/05/30 21:57:52 by healeksa          #+#    #+#             */
+/*   Updated: 2024/05/30 21:58:15 by healeksa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-#include "../includes/libft.h"
 
 int	ft_strcmp(char *s1, char *s2)
 {
@@ -18,8 +16,6 @@ int	ft_strcmp(char *s1, char *s2)
 
 	i = 0;
 	while ((s1[i] != '\0' || s2[i] != '\0') && s1[i] == s2[i])
-	{
 		i++;
-	}
 	return (s1[i] - s2[i]);
 }

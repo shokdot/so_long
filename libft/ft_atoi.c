@@ -6,13 +6,13 @@
 /*   By: healeksa <healeksa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/26 18:30:49 by healeksa          #+#    #+#             */
-/*   Updated: 2024/05/19 18:31:54 by healeksa         ###   ########.fr       */
+/*   Updated: 2024/05/30 21:56:43 by healeksa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/libft.h"
+#include "libft.h"
 
-int	ft_atoi(const char *str)
+long	ft_atoi(const char *str)
 {
 	int	sign;
 	int	res;

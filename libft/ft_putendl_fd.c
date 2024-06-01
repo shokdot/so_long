@@ -6,16 +6,20 @@
 /*   By: healeksa <healeksa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/27 17:28:07 by healeksa          #+#    #+#             */
-/*   Updated: 2024/05/19 18:32:33 by healeksa         ###   ########.fr       */
+/*   Updated: 2024/05/27 18:10:36 by healeksa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/libft.h"
+#include "libft.h"
 
-void	ft_putendl_fd(char *s, int fd)
+int	ft_putendl_fd(char *s, int fd)
 {
+	int	i;
+
+	i = 0;
 	if (!s)
-		return ;
-	ft_putstr_fd(s, fd);
+		return (0);
+	i += ft_putstr_fd(s, fd);
 	ft_putchar_fd('\n', fd);
+	return (i + 1);
 }

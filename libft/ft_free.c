@@ -1,20 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_toupper.c                                       :+:      :+:    :+:   */
+/*   ft_free.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: healeksa <healeksa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/26 16:25:15 by healeksa          #+#    #+#             */
-/*   Updated: 2024/01/26 16:27:14 by healeksa         ###   ########.fr       */
+/*   Created: 2024/05/28 00:46:10 by healeksa          #+#    #+#             */
+/*   Updated: 2024/05/28 00:48:43 by healeksa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_toupper(int c)
+void	ft_free(void **ptr)
 {
-	if (c >= 97 && c <= 122)
-		return (c - 32);
-	return (c);
+	if (ptr && *ptr)
+	{
+		free(*ptr);
+		*ptr = NULL;
+	}
 }

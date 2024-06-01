@@ -6,7 +6,7 @@
 /*   By: healeksa <healeksa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/19 18:10:42 by healeksa          #+#    #+#             */
-/*   Updated: 2024/05/24 23:23:51 by healeksa         ###   ########.fr       */
+/*   Updated: 2024/06/01 19:25:01 by healeksa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,13 +20,4 @@ void	throw_error(char *txt)
 	ft_putendl_fd(txt, 2);
 	ft_putstr_fd("\033[0m", 2);
 	exit(EXIT_FAILURE);
-}
-
-void	free_nulify(void **ptr)
-{
-	if (ptr != NULL && *ptr != NULL)
-	{
-		free(*ptr);
-		*ptr = NULL;
-	}
 }
