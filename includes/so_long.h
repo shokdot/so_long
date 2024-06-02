@@ -6,7 +6,7 @@
 /*   By: healeksa <healeksa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/16 21:43:21 by healeksa          #+#    #+#             */
-/*   Updated: 2024/06/01 19:26:43 by healeksa         ###   ########.fr       */
+/*   Updated: 2024/06/02 21:55:41 by healeksa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,12 @@ typedef struct s_game
 	char	*path;
 	int		map_width;
 	int		map_height;
+	char	**game_map;
 }			t_game;
 
-void		parse(int argc, char **argv, t_game *personaje);
+void		parse(int argc, char **argv, t_game *game);
+void		args_validation(int argc, char **argv, t_game *game);
+char		**map_parsing(t_game *game);
 
 // UTILS
 void		throw_error(char *txt);

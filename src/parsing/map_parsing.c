@@ -1,31 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_join.c                                          :+:      :+:    :+:   */
+/*   map_parsing.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: healeksa <healeksa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/27 19:00:17 by healeksa          #+#    #+#             */
-/*   Updated: 2024/06/02 22:39:01 by healeksa         ###   ########.fr       */
+/*   Created: 2024/06/02 17:53:16 by healeksa          #+#    #+#             */
+/*   Updated: 2024/06/02 22:31:12 by healeksa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "so_long.h"
 
-char	*ft_join(char *s1, char const *s2)
+char	**map_parsing(t_game *game)
 {
-	char	*res;
+	char	*tmp_line;
+	char	*tmp_map;
 
-	if (!s2)
-		return (NULL);
-	if (!s1)
+	tmp_line = get_next_line(game->map_fd);
+	tmp_map = NULL;
+	game->map_height = 0;
+	while (tmp_line)
 	{
-		s1 = (char *)malloc(sizeof(char) * 1);
-		if (!s1)
-			return (NULL);
-		s1[0] = '\0';
+		game->map_height++;
+		tmp_map = ft_join(tmp_map, tmp_line);
+		ft_free((void *)&tmp_line);
+		tmp_line = get_next_line(game->map_fd);
 	}
-	res = ft_strjoin(s1, s2);
-	ft_free((void *)&s1);
-	return (res);
+	game->game_map = ft_split(tmp_map, ' ');
+	return (game->game_map);
 }
