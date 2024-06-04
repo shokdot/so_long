@@ -6,7 +6,7 @@
 /*   By: healeksa <healeksa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/16 21:43:21 by healeksa          #+#    #+#             */
-/*   Updated: 2024/06/02 21:55:41 by healeksa         ###   ########.fr       */
+/*   Updated: 2024/06/04 18:58:49 by healeksa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,11 @@ typedef struct s_game
 void		parse(int argc, char **argv, t_game *game);
 void		args_validation(int argc, char **argv, t_game *game);
 char		**map_parsing(t_game *game);
+void		map_validation(t_game *game);
 
 // UTILS
 void		throw_error(char *txt);
+void		memory_free(char **arr);
+int			str_set(char *str, char *set);
 
 #endif

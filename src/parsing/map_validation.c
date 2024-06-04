@@ -1,61 +1,54 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.c                                            :+:      :+:    :+:   */
+/*   map_validation.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: healeksa <healeksa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/19 18:10:42 by healeksa          #+#    #+#             */
-/*   Updated: 2024/06/04 19:44:12 by healeksa         ###   ########.fr       */
+/*   Created: 2024/06/04 14:32:27 by healeksa          #+#    #+#             */
+/*   Updated: 2024/06/04 19:44:23 by healeksa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void	throw_error(char *txt)
-{
-	ft_putstr_fd("\033[0;31m", 2);
-	ft_putendl_fd("Error", 2);
-	ft_putstr_fd("\033[0;33m", 2);
-	ft_putendl_fd(txt, 2);
-	ft_putstr_fd("\033[0m", 2);
-	exit(EXIT_FAILURE);
-}
-
-void	memory_free(char **arr)
+void	rectangular(t_game *game)
 {
 	int	i;
+	int	row_size;
 
 	i = 0;
-	while (arr[i])
+	row_size = 0;
+	while (game->game_map[i])
 	{
-		free(arr[i]);
-		i++;
-	}
-	free(arr);
-	arr = NULL;
-}
-
-int	str_set(char *str, char *set)
-{
-	int	i;
-	int	j;
-
-	i = 0;
-	while (str[i])
-	{
-		j = 0;
-		while (set[j])
+		row_size = ft_strlen(game->game_map[i]);
+		if (game->map_width != row_size)
 		{
-			if (str[i] == set[j])
-				break ;
-			j++;
+			memory_free(game->game_map);
+			throw_error("Map is not rectangular");
 		}
-		if (!set[j])
-			return (1);
 		i++;
 	}
-	if (!str[i])
-		return (0);
-	return (1);
+}
+
+void	symbol_check(t_game *game)
+{
+	int	i;
+
+	i = 0;
+	while (game->game_map[i])
+	{
+		if (str_set(game->game_map[i], "01CEP"))
+		{
+			printf("error\n");
+			exit(1);
+		}
+		i++;
+	}
+}
+
+void	map_validation(t_game *game)
+{
+	rectangular(game);
+	symbol_check(game);
 }

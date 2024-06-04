@@ -6,7 +6,7 @@
 /*   By: healeksa <healeksa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/16 21:42:11 by healeksa          #+#    #+#             */
-/*   Updated: 2024/06/03 20:40:09 by healeksa         ###   ########.fr       */
+/*   Updated: 2024/06/04 14:38:10 by healeksa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,5 +37,5 @@ void	parse(int argc, char **argv, t_game *game)
 {
 	args_validation(argc, argv, game);
 	map_parsing(game);
-	// map_validation(game);
+	map_validation(game);
 }

@@ -6,7 +6,7 @@
 /*   By: healeksa <healeksa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/02 17:53:16 by healeksa          #+#    #+#             */
-/*   Updated: 2024/06/03 21:18:11 by healeksa         ###   ########.fr       */
+/*   Updated: 2024/06/04 17:07:01 by healeksa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ char	**map_parsing(t_game *game)
 		ft_free((void *)&tmp_line);
 		tmp_line = get_next_line(game->map_fd);
 	}
-	game->game_map = ft_split(tmp_map, ' ');
+	game->game_map = ft_split(tmp_map, '\n');
 	ft_free((void *)&tmp_map);
 	if (!game->game_map || !game->game_map[0])
 	{
