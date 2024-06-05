@@ -6,7 +6,7 @@
 /*   By: healeksa <healeksa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/04 14:32:27 by healeksa          #+#    #+#             */
-/*   Updated: 2024/06/04 19:44:23 by healeksa         ###   ########.fr       */
+/*   Updated: 2024/06/05 20:24:17 by healeksa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,10 +40,19 @@ void	symbol_check(t_game *game)
 	{
 		if (str_set(game->game_map[i], "01CEP"))
 		{
-			printf("error\n");
-			exit(1);
+			memory_free(game->game_map);
+			throw_error("In map has others symbols");
 		}
 		i++;
+	}
+}
+
+void	wall_surrounded(t_game *game)
+{
+	if (!horizantal_wall(game) || !vertical_wall(game))
+	{
+		memory_free(game->game_map);
+		throw_error("Not surrounded with wall");
 	}
 }
 
@@ -51,4 +60,5 @@ void	map_validation(t_game *game)
 {
 	rectangular(game);
 	symbol_check(game);
+	wall_surrounded(game);
 }
