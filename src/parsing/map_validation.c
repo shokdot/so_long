@@ -6,7 +6,7 @@
 /*   By: healeksa <healeksa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/04 14:32:27 by healeksa          #+#    #+#             */
-/*   Updated: 2024/06/05 20:24:17 by healeksa         ###   ########.fr       */
+/*   Updated: 2024/06/05 23:30:22 by healeksa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,9 +56,19 @@ void	wall_surrounded(t_game *game)
 	}
 }
 
+void	least_chars(t_game *game)
+{
+	if (!min_elm(game, 'E') || !min_elm(game, 'P') || !least_coin(game))
+	{
+		memory_free(game->game_map);
+		throw_error("Must Be 1 Exit(E), 1 Start(P) and at least 1 Coin (C)");
+	}
+}
+
 void	map_validation(t_game *game)
 {
 	rectangular(game);
 	symbol_check(game);
 	wall_surrounded(game);
+	least_chars(game);
 }
