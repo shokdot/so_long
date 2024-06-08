@@ -1,21 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   init_struct.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: healeksa <healeksa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/14 18:50:23 by healeksa          #+#    #+#             */
-/*   Updated: 2024/06/08 18:36:21 by healeksa         ###   ########.fr       */
+/*   Created: 2024/06/08 18:36:54 by healeksa          #+#    #+#             */
+/*   Updated: 2024/06/08 22:14:40 by healeksa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-int	main(int argc, char **argv)
+void	init_struct(t_game *game)
 {
-	t_game	game;
-
-	init_struct(&game);
-	parse(argc, argv, &game);
+	game->map_width = 0;
+	game->map_height = 0;
+	game->coin = 0;
+	game->tmp_exit = 0;
+	game->tmp_coins = 0;
 }

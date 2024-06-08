@@ -6,7 +6,7 @@
 /*   By: healeksa <healeksa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/16 21:43:21 by healeksa          #+#    #+#             */
-/*   Updated: 2024/06/05 23:18:46 by healeksa         ###   ########.fr       */
+/*   Updated: 2024/06/08 22:14:50 by healeksa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,24 +28,43 @@ typedef struct s_game
 	int		map_height;
 	char	**game_map;
 	int		coin;
+	int		player_x;
+	int		player_y;
+	int		tmp_exit;
+	int		tmp_coins;
 }			t_game;
 
 // Main Functions
+void		init_struct(t_game *game);
 void		parse(int argc, char **argv, t_game *game);
+
+// Parse Functions
 void		args_validation(int argc, char **argv, t_game *game);
 char		**map_parsing(t_game *game);
 void		map_validation(t_game *game);
 
-// Wall
+// Map-Validation Utils
+
+void		rectangular(t_game *game);
+void		symbol_check(t_game *game);
+void		wall_surrounded(t_game *game);
+void		least_chars(t_game *game);
+void		is_playible(t_game *game);
 int			horizantal_wall(t_game *game);
 int			vertical_wall(t_game *game);
-
-int			min_elm(t_game *game, char c);
+int			one_exit(t_game *game);
+int			one_start(t_game *game);
 int			least_coin(t_game *game);
+void		flood_fill(t_game *game, int x, int y, char **map);
 
-// UTILS
+// Utils
 void		throw_error(char *txt);
 void		memory_free(char **arr);
 int			str_set(char *str, char *set);
+
+// void		init_tmp_map(t_game *game, t_tmp *tmp_map, char **map);
+
+void		prt_map(char **map);
+char		**cpy_map(t_game *game);
 
 #endif

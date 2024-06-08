@@ -14,6 +14,8 @@ SRCDIRS = $(addprefix $(SRC_DIR)/, $(SUBDIRS))
 SRCS = $(notdir $(foreach dir, $(SRCDIRS), $(wildcard $(dir)/*.c))) $(notdir $(SRC_DIR)/main.c)
 OBJ = $(patsubst %.c, $(OBJ_DIR)/%.o, $(SRCS))
 
+SRCS += init_struct.c
+
 LIBFLAGS = -L mlx -L libft -l mlx -l ft
 MLXFLAGS = -framework OpenGL -framework AppKit
 #CFLAGS = -Wall -Wextra -Werror

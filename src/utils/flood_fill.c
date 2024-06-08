@@ -1,21 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   flood_fill.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: healeksa <healeksa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/14 18:50:23 by healeksa          #+#    #+#             */
-/*   Updated: 2024/06/08 18:36:21 by healeksa         ###   ########.fr       */
+/*   Created: 2024/06/07 18:38:35 by healeksa          #+#    #+#             */
+/*   Updated: 2024/06/08 22:13:24 by healeksa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-int	main(int argc, char **argv)
+void	flood_fill(t_game *game, int x, int y, char **map)
 {
-	t_game	game;
-
-	init_struct(&game);
-	parse(argc, argv, &game);
+	if (map[x][y] == '1' || map[x][y] == 'X' || x < 0 || y < 0
+		|| x >= game->map_height || y >= game->map_width)
+		return ;
+	if (map[x][y] == 'E')
+		game->tmp_exit++;
+	else if (map[x][y] == 'C')
+		game->tmp_coins++;
+	map[x][y] = 'X';
+	flood_fill(game, x + 1, y, map);
+	flood_fill(game, x, y + 1, map);
+	flood_fill(game, x - 1, y, map);
+	flood_fill(game, x, y - 1, map);
 }
