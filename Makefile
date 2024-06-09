@@ -1,7 +1,7 @@
 NAME = so_long
 
 SRC_DIR = src
-OBJ_DIR = obj
+OBJ_DIR = build
 SUBDIRS = parsing utils
 
 MLX_LIB = ./mlx
@@ -14,12 +14,10 @@ SRCDIRS = $(addprefix $(SRC_DIR)/, $(SUBDIRS))
 SRCS = $(notdir $(foreach dir, $(SRCDIRS), $(wildcard $(dir)/*.c))) $(notdir $(SRC_DIR)/main.c)
 OBJ = $(patsubst %.c, $(OBJ_DIR)/%.o, $(SRCS))
 
-SRCS += init_struct.c
-
 LIBFLAGS = -L mlx -L libft -l mlx -l ft
 MLXFLAGS = -framework OpenGL -framework AppKit
 #CFLAGS = -Wall -Wextra -Werror
-CFLAGS = -g3
+CFLAGS =
 
 GREEN = \x1b[32;1m
 RED = \x1b[31;1m
@@ -32,10 +30,10 @@ $(OBJ_DIR): libs
 
 libs:
 	@make -C $(LIBFT)
-#make -C $(MLX_LIB)
+# @make -C $(MLX_LIB)
 
 $(NAME): $(OBJ_DIR) $(OBJ) Makefile $(HEADER)
-	@$(CC) $(CFLAGS) $(INCLUDES) $(LIBFLAGS) $(MLX_FLAGS) $(OBJ) -o $(NAME)
+	@$(CC) $(CFLAGS) $(INCLUDES) $(LIBFLAGS) $(MLXFLAGS) $(OBJ) -o $(NAME)
 	@echo "$(GREEN) So_Long is waiting for you!$(RESET)"
 
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c $(HEADER) Makefile
@@ -55,4 +53,4 @@ fclean: clean
 
 re: fclean all
 
-.PHONY: all clean re fclean mlxlib
+.PHONY: all clean re fclean libs
