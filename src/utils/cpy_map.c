@@ -6,7 +6,7 @@
 /*   By: healeksa <healeksa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/08 21:29:54 by healeksa          #+#    #+#             */
-/*   Updated: 2024/06/08 22:02:56 by healeksa         ###   ########.fr       */
+/*   Updated: 2024/06/11 22:42:15 by healeksa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ char	**cpy_map(t_game *game)
 	int		i;
 	int		j;
 
-	map = (char **)malloc(game->map_height * sizeof(char *));
+	map = (char **)malloc((game->map_height + 1) * sizeof(char *));
 	if (!map)
 		err(game->game_map);
 	i = 0;

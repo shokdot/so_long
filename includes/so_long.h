@@ -6,7 +6,7 @@
 /*   By: healeksa <healeksa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/16 21:43:21 by healeksa          #+#    #+#             */
-/*   Updated: 2024/06/08 22:14:50 by healeksa         ###   ########.fr       */
+/*   Updated: 2024/06/11 22:32:50 by healeksa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,11 @@
 # include <stdio.h>
 # include <stdlib.h>
 # include <unistd.h>
+
+# define SCREE_WIDTH 1920
+# define SCREE_HEIGHT 1080
+# define SPRITE_WIDTH 32
+# define SPRITE_HEIGHT 32
 
 typedef struct s_game
 {
@@ -55,6 +60,7 @@ int			vertical_wall(t_game *game);
 int			one_exit(t_game *game);
 int			one_start(t_game *game);
 int			least_coin(t_game *game);
+void		map_size(t_game *game);
 void		flood_fill(t_game *game, int x, int y, char **map);
 
 // Utils

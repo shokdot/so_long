@@ -6,7 +6,7 @@
 /*   By: healeksa <healeksa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/07 16:55:00 by healeksa          #+#    #+#             */
-/*   Updated: 2024/06/08 22:20:43 by healeksa         ###   ########.fr       */
+/*   Updated: 2024/06/11 22:34:18 by healeksa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,8 @@ void	is_playible(t_game *game)
 	if (game->coin != game->tmp_coins || game->tmp_exit != 1)
 	{
 		memory_free(game->game_map);
+		memory_free(map);
 		throw_error("Map is'nt playible");
 	}
+	memory_free(map);
 }

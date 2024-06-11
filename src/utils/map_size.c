@@ -1,26 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   map_size.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: healeksa <healeksa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/14 18:50:23 by healeksa          #+#    #+#             */
-/*   Updated: 2024/06/11 22:36:08 by healeksa         ###   ########.fr       */
+/*   Created: 2024/06/11 22:35:26 by healeksa          #+#    #+#             */
+/*   Updated: 2024/06/11 22:35:33 by healeksa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-int	main(int argc, char **argv)
+void	map_size(t_game *game)
 {
-	t_game	game;
-	void	*mlx;
-
-	// void	*mlx_win;
-	init_struct(&game);
-	parse(argc, argv, &game);
-	// mlx = mlx_init();
-	// mlx_win = mlx_new_window(mlx, 800, 900, "so_long");
-	// mlx_loop(mlx);
+	if (game->map_width > SCREE_WIDTH / SPRITE_WIDTH
+		|| game->map_height > SCREE_HEIGHT / SPRITE_HEIGHT)
+	{
+		memory_free(game->game_map);
+		throw_error("Map is too large");
+	}
 }
