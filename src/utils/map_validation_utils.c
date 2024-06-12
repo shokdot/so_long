@@ -6,7 +6,7 @@
 /*   By: healeksa <healeksa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/07 16:55:00 by healeksa          #+#    #+#             */
-/*   Updated: 2024/06/11 22:34:18 by healeksa         ###   ########.fr       */
+/*   Updated: 2024/06/12 17:16:53 by healeksa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ void	symbol_check(t_game *game)
 	i = 0;
 	while (game->game_map[i])
 	{
-		if (str_set(game->game_map[i], "01CEP"))
+		if (str_set(game->game_map[i], "01CEPD"))
 		{
 			memory_free(game->game_map);
 			throw_error("In map has others symbols");

@@ -6,7 +6,7 @@
 /*   By: healeksa <healeksa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/07 18:38:35 by healeksa          #+#    #+#             */
-/*   Updated: 2024/06/08 22:13:24 by healeksa         ###   ########.fr       */
+/*   Updated: 2024/06/12 17:17:45 by healeksa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 void	flood_fill(t_game *game, int x, int y, char **map)
 {
-	if (map[x][y] == '1' || map[x][y] == 'X' || x < 0 || y < 0
-		|| x >= game->map_height || y >= game->map_width)
+	if (map[x][y] == '1' || map[x][y] == 'X' || map[x][y] == 'D' || x < 0
+		|| y < 0 || x >= game->map_height || y >= game->map_width)
 		return ;
 	if (map[x][y] == 'E')
 		game->tmp_exit++;

@@ -6,7 +6,7 @@
 /*   By: healeksa <healeksa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/16 21:43:21 by healeksa          #+#    #+#             */
-/*   Updated: 2024/06/11 22:32:50 by healeksa         ###   ########.fr       */
+/*   Updated: 2024/06/12 23:40:58 by healeksa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@
 # include <stdlib.h>
 # include <unistd.h>
 
-# define SCREE_WIDTH 1920
-# define SCREE_HEIGHT 1080
+# define SCREEN_WIDTH 1920
+# define SCREEN_HEIGHT 1080
 # define SPRITE_WIDTH 32
 # define SPRITE_HEIGHT 32
 
@@ -37,6 +37,9 @@ typedef struct s_game
 	int		player_y;
 	int		tmp_exit;
 	int		tmp_coins;
+	int		player_steps;
+	void	*mlx_ptr;
+	void	*win_ptr;
 }			t_game;
 
 // Main Functions
@@ -47,6 +50,9 @@ void		parse(int argc, char **argv, t_game *game);
 void		args_validation(int argc, char **argv, t_game *game);
 char		**map_parsing(t_game *game);
 void		map_validation(t_game *game);
+
+// Init Game functions
+void		init_game(t_game *game);
 
 // Map-Validation Utils
 
