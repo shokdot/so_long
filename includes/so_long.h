@@ -6,7 +6,7 @@
 /*   By: healeksa <healeksa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/16 21:43:21 by healeksa          #+#    #+#             */
-/*   Updated: 2024/06/12 23:40:58 by healeksa         ###   ########.fr       */
+/*   Updated: 2024/06/13 23:57:41 by healeksa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,16 @@
 # define SPRITE_WIDTH 32
 # define SPRITE_HEIGHT 32
 
+typedef struct s_img
+{
+	void	*wall;
+	void	*floor;
+	void	*exit;
+	void	*coin;
+	void	*enemy1;
+	void	*enemy2;
+}			t_img;
+
 typedef struct s_game
 {
 	int		map_fd;
@@ -40,6 +50,7 @@ typedef struct s_game
 	int		player_steps;
 	void	*mlx_ptr;
 	void	*win_ptr;
+	t_img	img;
 }			t_game;
 
 // Main Functions
