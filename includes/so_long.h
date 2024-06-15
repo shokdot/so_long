@@ -6,7 +6,7 @@
 /*   By: healeksa <healeksa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/16 21:43:21 by healeksa          #+#    #+#             */
-/*   Updated: 2024/06/13 23:57:41 by healeksa         ###   ########.fr       */
+/*   Updated: 2024/06/15 19:48:05 by healeksa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ typedef struct s_img
 	void	*floor;
 	void	*exit;
 	void	*coin;
+	void	*player;
 	void	*enemy1;
 	void	*enemy2;
 }			t_img;
@@ -56,6 +57,7 @@ typedef struct s_game
 // Main Functions
 void		init_struct(t_game *game);
 void		parse(int argc, char **argv, t_game *game);
+void		init_game(t_game *game);
 
 // Parse Functions
 void		args_validation(int argc, char **argv, t_game *game);
@@ -63,7 +65,8 @@ char		**map_parsing(t_game *game);
 void		map_validation(t_game *game);
 
 // Init Game functions
-void		init_game(t_game *game);
+void		init_window(t_game *game);
+void		init_images(t_game *game);
 
 // Map-Validation Utils
 

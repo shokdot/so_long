@@ -6,46 +6,75 @@
 /*   By: healeksa <healeksa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/12 17:25:38 by healeksa          #+#    #+#             */
-/*   Updated: 2024/06/13 23:57:57 by healeksa         ###   ########.fr       */
+/*   Updated: 2024/06/15 21:40:24 by healeksa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void	init_images(t_game *game)
+void	*charater_spell(char c, t_game *game)
 {
-	int	img_width;
-	int	img_height;
+	if (c == '0')
+		return (game->img.floor);
+	else if (c == '1')
+		return (game->img.wall);
+	else if (c == 'E')
+		return (game->img.exit);
+	else if (c == 'C')
+		return (game->img.coin);
+	else if (c == 'P')
+		return (game->img.player);
+	else if (c == 'D')
+		return (game->img.enemy1);
+	return (NULL);
+}
 
-	game->img.wall = mlx_xpm_file_to_image(game->mlx_ptr,
-			"assets/others/wall.xpm", &img_width, &img_height);
-	game->img.floor = mlx_xpm_file_to_image(game->mlx_ptr,
-			"assets/others/floor.xmp", &img_width, &img_height);
-	game->img.exit = mlx_xpm_file_to_image(game->mlx_ptr,
-			"assets/others/exit.xmp", &img_width, &img_height);
-	game->img.coin = mlx_xpm_file_to_image(game->mlx_ptr,
-			"assets/others/coin.xpm", &img_width, &img_height);
-	game->img.enemy1 = mlx_xpm_file_to_image(game->mlx_ptr,
-			"assets/ghost/ghost_1a.xpm", &img_width, &img_height);
-	game->img.enemy2 = mlx_xpm_file_to_image(game->mlx_ptr,
-			"assets/ghost/ghost_2a.xpm", &img_width, &img_height);
+void	draw_init_map(t_game *game)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	j = 0;
+	while (game->game_map[i])
+	{
+		j = 0;
+		while (game->game_map[i][j])
+		{
+			mlx_put_image_to_window(game->mlx_ptr, game->win_ptr,
+				game->img.floor, j * SPRITE_WIDTH, i * SPRITE_HEIGHT);
+			j++;
+		}
+		i++;
+	}
+}
+
+void	draw_map(t_game *game)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	j = 0;
+	while (game->game_map[i])
+	{
+		j = 0;
+		while (game->game_map[i][j])
+		{
+			mlx_put_image_to_window(game->mlx_ptr, game->win_ptr,
+				charater_spell(game->game_map[i][j], game), j * SPRITE_WIDTH, i
+				* SPRITE_HEIGHT);
+			j++;
+		}
+		i++;
+	}
 }
 
 void	init_game(t_game *game)
 {
-	game->mlx_ptr = mlx_init();
-	if (!game->mlx_ptr)
-	{
-		memory_free(game->game_map);
-		throw_error("Mlx don't worked correctly");
-	}
-	game->win_ptr = mlx_new_window(game->mlx_ptr, game->map_width
-			* SPRITE_WIDTH, game->map_height * SPRITE_HEIGHT, "so_long");
-	if (!game->win_ptr)
-	{
-		memory_free(game->game_map);
-		throw_error("Mlx don't worked correctly");
-	}
+	init_window(game);
 	init_images(game);
+	draw_init_map(game);
+	draw_map(game);
 	mlx_loop(game->mlx_ptr);
 }
