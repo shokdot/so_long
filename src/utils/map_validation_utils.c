@@ -6,7 +6,7 @@
 /*   By: healeksa <healeksa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/07 16:55:00 by healeksa          #+#    #+#             */
-/*   Updated: 2024/06/12 17:16:53 by healeksa         ###   ########.fr       */
+/*   Updated: 2024/06/16 21:26:49 by healeksa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,15 +67,15 @@ void	least_chars(t_game *game)
 
 void	is_playible(t_game *game)
 {
-	char	**map;
+	char	**tmp_map;
 
-	map = cpy_map(game);
-	flood_fill(game, game->player_x, game->player_y, map);
+	tmp_map = cpy_map(game);
+	flood_fill(game, game->player_x, game->player_y, tmp_map);
 	if (game->coin != game->tmp_coins || game->tmp_exit != 1)
 	{
 		memory_free(game->game_map);
-		memory_free(map);
+		memory_free(tmp_map);
 		throw_error("Map is'nt playible");
 	}
-	memory_free(map);
+	memory_free(tmp_map);
 }

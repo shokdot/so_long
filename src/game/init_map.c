@@ -1,30 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init_window.c                                      :+:      :+:    :+:   */
+/*   init_map.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: healeksa <healeksa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/15 19:45:07 by healeksa          #+#    #+#             */
-/*   Updated: 2024/06/16 21:44:45 by healeksa         ###   ########.fr       */
+/*   Created: 2024/06/16 21:23:49 by healeksa          #+#    #+#             */
+/*   Updated: 2024/06/16 21:24:08 by healeksa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void	init_window(t_game *game)
+void	init_map(t_game *game)
 {
-	game->mlx_ptr = mlx_init();
-	if (!game->mlx_ptr)
+	int	i;
+	int	j;
+
+	i = 0;
+	j = 0;
+	while (game->game_map[i])
 	{
-		memory_free(game->game_map);
-		throw_error("Mlx doesn't worked correctly");
-	}
-	game->win_ptr = mlx_new_window(game->mlx_ptr, game->map_width
-			* SPRITE_WIDTH, game->map_height * SPRITE_HEIGHT, "so_long");
-	if (!game->win_ptr)
-	{
-		memory_free(game->game_map);
-		throw_error("Mlx doesn't worked correctly");
+		j = 0;
+		while (game->game_map[i][j])
+		{
+			draw_map(game, i, j, game->game_map[i][j]);
+			j++;
+		}
+		i++;
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: healeksa <healeksa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/16 21:43:21 by healeksa          #+#    #+#             */
-/*   Updated: 2024/06/15 19:48:05 by healeksa         ###   ########.fr       */
+/*   Updated: 2024/06/16 21:52:12 by healeksa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,46 @@
 # define SCREEN_HEIGHT 1080
 # define SPRITE_WIDTH 32
 # define SPRITE_HEIGHT 32
+
+# define ON_KEYDOWN 2
+# define KEY_MASK 1
+
+# define ON_DESTROY 17
+# define NO_EVENT 0
+
+# define WALL "assets/others/wall.xpm"
+# define FLOOR "assets/others/floor.xpm"
+# define EXIT "assets/others/exit.xpm"
+# define COIN "assets/others/coin.xpm"
+# define ENEMY_1 "assets/ghost/ghost_1.xpm"
+# define ENEMY_2 "assets/ghost/ghost_2.xpm"
+# define PLAYER "assets/pacman/pac_right.xpm"
+
+# ifdef __linux__
+#  define UNAME "Linux"
+#  define UP_KEY 65362
+#  define DOWN_KEY 65364
+#  define LEFT_KEY 65361
+#  define RIGHT_KEY 6536
+#  define ESC 65307
+#  define Q 24
+
+# elif defined(__APPLE__)
+#  define UNAME "Darwin"
+#  define UP_KEY 126
+#  define DOWN_KEY 125
+#  define LEFT_KEY 123
+#  define RIGHT_KEY 124
+#  define ESC 53
+#  define Q 12
+
+# else
+#  define UP_KEY 0
+#  define DOWN_KEY 0
+#  define LEFT_KEY 0
+#  define RIGHT_KEY 0
+
+# endif
 
 typedef struct s_img
 {
@@ -64,11 +104,11 @@ void		args_validation(int argc, char **argv, t_game *game);
 char		**map_parsing(t_game *game);
 void		map_validation(t_game *game);
 
-// Init Game functions
+// Init Game Functions
 void		init_window(t_game *game);
 void		init_images(t_game *game);
 
-// Map-Validation Utils
+// Map Validation Utils
 
 void		rectangular(t_game *game);
 void		symbol_check(t_game *game);
@@ -82,15 +122,22 @@ int			one_start(t_game *game);
 int			least_coin(t_game *game);
 void		map_size(t_game *game);
 void		flood_fill(t_game *game, int x, int y, char **map);
+char		**cpy_map(t_game *game);
+
+// Game Functions
+void		draw_map(t_game *game, int i, int j, char sprite);
+void		init_map(t_game *game);
+int			close_game(t_game *game);
+
+// Hooks
+int			hook_handler(int keycode, t_game *game);
 
 // Utils
 void		throw_error(char *txt);
 void		memory_free(char **arr);
 int			str_set(char *str, char *set);
-
-// void		init_tmp_map(t_game *game, t_tmp *tmp_map, char **map);
-
 void		prt_map(char **map);
-char		**cpy_map(t_game *game);
 
 #endif
+
+// void		init_tmp_map(t_game *game, t_tmp *tmp_map, char **map);
