@@ -17,7 +17,7 @@ OBJ = $(patsubst %.c, $(OBJ_DIR)/%.o, $(SRCS))
 LIBFLAGS = -L mlx -L libft -l mlx -l ft
 MLXFLAGS = -framework OpenGL -framework AppKit
 #CFLAGS = -Wall -Wextra -Werror
-CFLAGS = -g3
+CFLAGS = -g3 -fsanitize=address
 
 GREEN = \x1b[32;1m
 RED = \x1b[31;1m

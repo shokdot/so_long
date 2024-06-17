@@ -6,7 +6,7 @@
 /*   By: healeksa <healeksa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/16 21:43:21 by healeksa          #+#    #+#             */
-/*   Updated: 2024/06/16 21:52:12 by healeksa         ###   ########.fr       */
+/*   Updated: 2024/06/17 18:43:42 by healeksa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -131,6 +131,9 @@ int			close_game(t_game *game);
 
 // Hooks
 int			hook_handler(int keycode, t_game *game);
+
+// Movement
+void		move(int x, int y, int keycode, t_game *game);
 
 // Utils
 void		throw_error(char *txt);
