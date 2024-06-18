@@ -6,7 +6,7 @@
 /*   By: healeksa <healeksa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/16 21:43:21 by healeksa          #+#    #+#             */
-/*   Updated: 2024/06/18 21:03:35 by healeksa         ###   ########.fr       */
+/*   Updated: 2024/06/18 22:27:38 by healeksa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,11 @@
 # define COIN "assets/others/coin.xpm"
 # define ENEMY_1 "assets/ghost/ghost_1.xpm"
 # define ENEMY_2 "assets/ghost/ghost_2.xpm"
-# define PLAYER "assets/pacman/pac_right.xpm"
+
+# define PLAYER_RIGHT "assets/pacman/pac_right.xpm"
+# define PLAYER_LEFT "assets/pacman/pac_left.xpm"
+# define PLAYER_UP "assets/pacman/pac_up.xpm"
+# define PLAYER_DOWN "assets/pacman/pac_down.xpm"
 
 # ifdef __linux__
 #  define UNAME "Linux"
@@ -71,7 +75,10 @@ typedef struct s_img
 	void	*floor;
 	void	*exit;
 	void	*coin;
-	void	*player;
+	void	*player_right;
+	void	*player_left;
+	void	*player_up;
+	void	*player_down;
 	void	*enemy1;
 	void	*enemy2;
 }			t_img;
@@ -93,6 +100,7 @@ typedef struct s_game
 	void	*win_ptr;
 	t_img	img;
 	char	*move_str;
+	int		player_flag;
 }			t_game;
 
 // Main Functions

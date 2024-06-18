@@ -6,7 +6,7 @@
 /*   By: healeksa <healeksa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/15 19:47:06 by healeksa          #+#    #+#             */
-/*   Updated: 2024/06/18 19:59:53 by healeksa         ###   ########.fr       */
+/*   Updated: 2024/06/18 22:26:34 by healeksa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,14 @@ void	init_enemy(t_game *game, int *img_width, int *img_height)
 
 void	init_player(t_game *game, int *img_width, int *img_height)
 {
-	game->img.player = mlx_xpm_file_to_image(game->mlx_ptr, PLAYER, img_width,
-			img_height);
+	game->img.player_right = mlx_xpm_file_to_image(game->mlx_ptr, PLAYER_RIGHT,
+			img_width, img_height);
+	game->img.player_left = mlx_xpm_file_to_image(game->mlx_ptr, PLAYER_LEFT,
+			img_width, img_height);
+	game->img.player_up = mlx_xpm_file_to_image(game->mlx_ptr, PLAYER_UP,
+			img_width, img_height);
+	game->img.player_down = mlx_xpm_file_to_image(game->mlx_ptr, PLAYER_DOWN,
+			img_width, img_height);
 }
 
 void	init_others(t_game *game, int *img_width, int *img_height)

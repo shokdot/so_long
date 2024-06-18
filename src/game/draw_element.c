@@ -6,11 +6,45 @@
 /*   By: healeksa <healeksa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/16 21:13:06 by healeksa          #+#    #+#             */
-/*   Updated: 2024/06/18 20:15:52 by healeksa         ###   ########.fr       */
+/*   Updated: 2024/06/18 22:38:38 by healeksa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
+
+void	player_directon(t_game *game, int i, int j, char sprite)
+{
+	if (game->player_flag == RIGHT_KEY)
+		mlx_put_image_to_window(game->mlx_ptr, game->win_ptr,
+			game->img.player_right, j * SPRITE_WIDTH, i * SPRITE_HEIGHT);
+	else if (game->player_flag == LEFT_KEY)
+		mlx_put_image_to_window(game->mlx_ptr, game->win_ptr,
+			game->img.player_left, j * SPRITE_WIDTH, i * SPRITE_HEIGHT);
+	else if (game->player_flag == UP_KEY)
+		mlx_put_image_to_window(game->mlx_ptr, game->win_ptr,
+			game->img.player_up, j * SPRITE_WIDTH, i * SPRITE_HEIGHT);
+	else if (game->player_flag == DOWN_KEY)
+		mlx_put_image_to_window(game->mlx_ptr, game->win_ptr,
+			game->img.player_down, j * SPRITE_WIDTH, i * SPRITE_HEIGHT);
+}
+
+void	exit_direction(t_game *game, int i, int j, char sprite)
+{
+	mlx_put_image_to_window(game->mlx_ptr, game->win_ptr, game->img.exit, j
+		* SPRITE_WIDTH, i * SPRITE_HEIGHT);
+	if (game->player_flag == RIGHT_KEY)
+		mlx_put_image_to_window(game->mlx_ptr, game->win_ptr,
+			game->img.player_right, j * SPRITE_WIDTH, i * SPRITE_HEIGHT);
+	else if (game->player_flag == LEFT_KEY)
+		mlx_put_image_to_window(game->mlx_ptr, game->win_ptr,
+			game->img.player_left, j * SPRITE_WIDTH, i * SPRITE_HEIGHT);
+	else if (game->player_flag == UP_KEY)
+		mlx_put_image_to_window(game->mlx_ptr, game->win_ptr,
+			game->img.player_up, j * SPRITE_WIDTH, i * SPRITE_HEIGHT);
+	else if (game->player_flag == DOWN_KEY)
+		mlx_put_image_to_window(game->mlx_ptr, game->win_ptr,
+			game->img.player_down, j * SPRITE_WIDTH, i * SPRITE_HEIGHT);
+}
 
 void	draw_element(t_game *game, int i, int j, char sprite)
 {
@@ -27,16 +61,10 @@ void	draw_element(t_game *game, int i, int j, char sprite)
 		mlx_put_image_to_window(game->mlx_ptr, game->win_ptr, game->img.coin, j
 			* SPRITE_WIDTH, i * SPRITE_HEIGHT);
 	else if (sprite == 'P')
-		mlx_put_image_to_window(game->mlx_ptr, game->win_ptr, game->img.player,
-			j * SPRITE_WIDTH, i * SPRITE_HEIGHT);
+		player_directon(game, i, j, sprite);
 	else if (sprite == 'D')
 		mlx_put_image_to_window(game->mlx_ptr, game->win_ptr, game->img.enemy1,
 			j * SPRITE_WIDTH, i * SPRITE_HEIGHT);
 	else if (sprite == 'Z')
-	{
-		mlx_put_image_to_window(game->mlx_ptr, game->win_ptr, game->img.exit, j
-			* SPRITE_WIDTH, i * SPRITE_HEIGHT);
-		mlx_put_image_to_window(game->mlx_ptr, game->win_ptr, game->img.player,
-			j * SPRITE_WIDTH, i * SPRITE_HEIGHT);
-	}
+		exit_direction(game, i, j, sprite);
 }

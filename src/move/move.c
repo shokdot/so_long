@@ -6,7 +6,7 @@
 /*   By: healeksa <healeksa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/17 18:33:47 by healeksa          #+#    #+#             */
-/*   Updated: 2024/06/18 21:07:27 by healeksa         ###   ########.fr       */
+/*   Updated: 2024/06/18 22:50:48 by healeksa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,8 @@ void	move(int x, int y, int keycode, t_game *game)
 		exit_act(x, y, game);
 	else
 		return ;
+	game->player_flag = keycode;
+	mlx_clear_window(game->mlx_ptr, game->win_ptr);
 	draw_map(game);
 	change_player_cords(game, keycode);
 	game->player_steps++;
