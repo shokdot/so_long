@@ -6,7 +6,7 @@
 /*   By: healeksa <healeksa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/16 21:43:21 by healeksa          #+#    #+#             */
-/*   Updated: 2024/06/17 18:43:42 by healeksa         ###   ########.fr       */
+/*   Updated: 2024/06/18 20:14:00 by healeksa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,6 @@
 #  define LEFT_KEY 65361
 #  define RIGHT_KEY 6536
 #  define ESC 65307
-#  define Q 24
 
 # elif defined(__APPLE__)
 #  define UNAME "Darwin"
@@ -55,7 +54,6 @@
 #  define LEFT_KEY 123
 #  define RIGHT_KEY 124
 #  define ESC 53
-#  define Q 12
 
 # else
 #  define UP_KEY 0
@@ -125,8 +123,8 @@ void		flood_fill(t_game *game, int x, int y, char **map);
 char		**cpy_map(t_game *game);
 
 // Game Functions
-void		draw_map(t_game *game, int i, int j, char sprite);
-void		init_map(t_game *game);
+void		draw_element(t_game *game, int i, int j, char sprite);
+void		draw_map(t_game *game);
 int			close_game(t_game *game);
 
 // Hooks
@@ -135,6 +133,11 @@ int			hook_handler(int keycode, t_game *game);
 // Movement
 void		move(int x, int y, int keycode, t_game *game);
 
+// Movment actions
+void		enemy_act(char *str, t_game *game);
+void		floor_act(int x, int y, t_game *game);
+void		coin_act(int x, int y, t_game *game);
+void		exit_act(char *str, int x, int y, t_game *game);
 // Utils
 void		throw_error(char *txt);
 void		memory_free(char **arr);

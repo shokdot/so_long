@@ -6,7 +6,7 @@
 /*   By: healeksa <healeksa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/17 18:33:47 by healeksa          #+#    #+#             */
-/*   Updated: 2024/06/17 23:45:59 by healeksa         ###   ########.fr       */
+/*   Updated: 2024/06/18 20:21:18 by healeksa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,44 +26,25 @@ void	change_player_cords(t_game *game, int keycode)
 
 void	move(int x, int y, int keycode, t_game *game)
 {
-	static int	coins = 0;
+	char	*str;
 
-	if (game->game_map[x][y] == '1')
-		return ;
-	else if (game->game_map[x][y] == 'C')
-	{
-		coins++;
-		game->game_map[x][y] = 'P';
-		game->game_map[game->player_x][game->player_y] = '0';
-	}
-	else if (game->game_map[x][y] == 'D')
-	{
-		ft_putstr_fd("\033[0;31m", 2);
-		ft_putendl_fd("You Lose!", 0);
-		ft_putstr_fd("\033[0m", 2);
-		close_game(game);
-	}
+	str = ft_strdup("0");
+	printf("%d\n", game->coin);
+	if (game->game_map[x][y] == 'D')
+		enemy_act(str, game);
 	else if (game->game_map[x][y] == '0')
-	{
-		game->game_map[game->player_x][game->player_y] = '0';
-		game->game_map[x][y] = 'P';
-		// printf("%c\n", game->game_map[game->player_x][game->player_x]);
-		if (game->game_map[game->player_x][game->player_x] == 'E')
-		{
-			printf("EXitit vra em\n");
-			// 	game->game_map[game->player_x][game->player_y] = 'E';
-		}
-		// else
-		// {
-		// 	game->game_map[game->player_x][game->player_y] = '0';
-		// }
-	}
+		floor_act(x, y, game);
+	else if (game->game_map[x][y] == 'C')
+		coin_act(x, y, game);
 	else if (game->game_map[x][y] == 'E')
-	{
-		game->game_map[game->player_x][game->player_y] = '0';
-		game->game_map[x][y] = 'P';
-	}
-	init_map(game);
+		exit_act(str, x, y, game);
+	else
+		return ;
+	draw_map(game);
 	change_player_cords(game, keycode);
+	ft_free((void *)&str);
 	game->player_steps++;
+	str = ft_itoa(game->player_steps);
+	mlx_string_put(game->mlx_ptr, game->win_ptr, 5, 5, 0xFFFFFF, "Moves: ");
+	mlx_string_put(game->mlx_ptr, game->win_ptr, 73, 5, 0xFFFFFF, str);
 }

@@ -2,7 +2,7 @@ NAME = so_long
 
 SRC_DIR = src
 OBJ_DIR = build
-SUBDIRS = parsing utils game
+SUBDIRS = parsing utils game move
 
 MLX_LIB = ./mlx
 LIBFT = ./libft

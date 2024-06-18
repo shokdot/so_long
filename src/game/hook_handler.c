@@ -6,7 +6,7 @@
 /*   By: healeksa <healeksa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/16 21:46:23 by healeksa          #+#    #+#             */
-/*   Updated: 2024/06/17 18:49:59 by healeksa         ###   ########.fr       */
+/*   Updated: 2024/06/18 17:52:42 by healeksa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int	hook_handler(int keycode, t_game *game)
 		move(game->player_x, game->player_y - 1, LEFT_KEY, game);
 	else if (keycode == RIGHT_KEY)
 		move(game->player_x, game->player_y + 1, RIGHT_KEY, game);
-	else if (keycode == ESC || keycode == Q)
+	else if (keycode == ESC)
 		close_game(game);
 	return (0);
 }

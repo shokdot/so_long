@@ -5,31 +5,28 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: healeksa <healeksa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/16 21:13:06 by healeksa          #+#    #+#             */
-/*   Updated: 2024/06/16 21:13:32 by healeksa         ###   ########.fr       */
+/*   Created: 2024/06/16 21:23:49 by healeksa          #+#    #+#             */
+/*   Updated: 2024/06/18 20:16:26 by healeksa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void	draw_map(t_game *game, int i, int j, char sprite)
+void	draw_map(t_game *game)
 {
-	if (sprite == '0')
-		mlx_put_image_to_window(game->mlx_ptr, game->win_ptr, game->img.floor, j
-			* SPRITE_WIDTH, i * SPRITE_HEIGHT);
-	else if (sprite == '1')
-		mlx_put_image_to_window(game->mlx_ptr, game->win_ptr, game->img.wall, j
-			* SPRITE_WIDTH, i * SPRITE_HEIGHT);
-	else if (sprite == 'E')
-		mlx_put_image_to_window(game->mlx_ptr, game->win_ptr, game->img.exit, j
-			* SPRITE_WIDTH, i * SPRITE_HEIGHT);
-	else if (sprite == 'C')
-		mlx_put_image_to_window(game->mlx_ptr, game->win_ptr, game->img.coin, j
-			* SPRITE_WIDTH, i * SPRITE_HEIGHT);
-	else if (sprite == 'P')
-		mlx_put_image_to_window(game->mlx_ptr, game->win_ptr, game->img.player,
-			j * SPRITE_WIDTH, i * SPRITE_HEIGHT);
-	else if (sprite == 'D')
-		mlx_put_image_to_window(game->mlx_ptr, game->win_ptr, game->img.enemy1,
-			j * SPRITE_WIDTH, i * SPRITE_HEIGHT);
+	int	i;
+	int	j;
+
+	i = 0;
+	j = 0;
+	while (game->game_map[i])
+	{
+		j = 0;
+		while (game->game_map[i][j])
+		{
+			draw_element(game, i, j, game->game_map[i][j]);
+			j++;
+		}
+		i++;
+	}
 }
