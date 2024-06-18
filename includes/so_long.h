@@ -6,7 +6,7 @@
 /*   By: healeksa <healeksa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/16 21:43:21 by healeksa          #+#    #+#             */
-/*   Updated: 2024/06/18 20:14:00 by healeksa         ###   ########.fr       */
+/*   Updated: 2024/06/18 21:03:35 by healeksa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,8 @@
 
 # define ON_DESTROY 17
 # define NO_EVENT 0
+
+# define STR_COLOR 0xFFFFFF
 
 # define WALL "assets/others/wall.xpm"
 # define FLOOR "assets/others/floor.xpm"
@@ -90,6 +92,7 @@ typedef struct s_game
 	void	*mlx_ptr;
 	void	*win_ptr;
 	t_img	img;
+	char	*move_str;
 }			t_game;
 
 // Main Functions
@@ -134,10 +137,10 @@ int			hook_handler(int keycode, t_game *game);
 void		move(int x, int y, int keycode, t_game *game);
 
 // Movment actions
-void		enemy_act(char *str, t_game *game);
+void		enemy_act(t_game *game);
 void		floor_act(int x, int y, t_game *game);
 void		coin_act(int x, int y, t_game *game);
-void		exit_act(char *str, int x, int y, t_game *game);
+void		exit_act(int x, int y, t_game *game);
 // Utils
 void		throw_error(char *txt);
 void		memory_free(char **arr);
