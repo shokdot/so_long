@@ -6,7 +6,7 @@
 /*   By: healeksa <healeksa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/16 21:43:21 by healeksa          #+#    #+#             */
-/*   Updated: 2024/06/18 22:27:38 by healeksa         ###   ########.fr       */
+/*   Updated: 2024/06/19 19:31:35 by healeksa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,8 @@
 # define NO_EVENT 0
 
 # define STR_COLOR 0xFFFFFF
+
+# define ANIMATION_SPEED 10
 
 # define WALL "assets/others/wall.xpm"
 # define FLOOR "assets/others/floor.xpm"
@@ -101,6 +103,8 @@ typedef struct s_game
 	t_img	img;
 	char	*move_str;
 	int		player_flag;
+	int		enemy_flag;
+	int		frame;
 }			t_game;
 
 // Main Functions
@@ -149,6 +153,10 @@ void		enemy_act(t_game *game);
 void		floor_act(int x, int y, t_game *game);
 void		coin_act(int x, int y, t_game *game);
 void		exit_act(int x, int y, t_game *game);
+
+// Animation
+int			enemy_animation(t_game *game);
+
 // Utils
 void		throw_error(char *txt);
 void		memory_free(char **arr);

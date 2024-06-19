@@ -6,7 +6,7 @@
 /*   By: healeksa <healeksa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/16 21:13:06 by healeksa          #+#    #+#             */
-/*   Updated: 2024/06/18 22:38:38 by healeksa         ###   ########.fr       */
+/*   Updated: 2024/06/19 19:08:39 by healeksa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,16 @@ void	exit_direction(t_game *game, int i, int j, char sprite)
 			game->img.player_down, j * SPRITE_WIDTH, i * SPRITE_HEIGHT);
 }
 
+static void	enemy(t_game *game, int i, int j, char sprite)
+{
+	if (game->enemy_flag == 1)
+		mlx_put_image_to_window(game->mlx_ptr, game->win_ptr, game->img.enemy1,
+			j * SPRITE_WIDTH, i * SPRITE_HEIGHT);
+	else if (game->enemy_flag == 2)
+		mlx_put_image_to_window(game->mlx_ptr, game->win_ptr, game->img.enemy2,
+			j * SPRITE_WIDTH, i * SPRITE_HEIGHT);
+}
+
 void	draw_element(t_game *game, int i, int j, char sprite)
 {
 	if (sprite == '0')
@@ -63,8 +73,7 @@ void	draw_element(t_game *game, int i, int j, char sprite)
 	else if (sprite == 'P')
 		player_directon(game, i, j, sprite);
 	else if (sprite == 'D')
-		mlx_put_image_to_window(game->mlx_ptr, game->win_ptr, game->img.enemy1,
-			j * SPRITE_WIDTH, i * SPRITE_HEIGHT);
+		enemy(game, i, j, sprite);
 	else if (sprite == 'Z')
 		exit_direction(game, i, j, sprite);
 }

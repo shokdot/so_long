@@ -6,7 +6,7 @@
 /*   By: healeksa <healeksa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/08 18:36:54 by healeksa          #+#    #+#             */
-/*   Updated: 2024/06/18 22:21:22 by healeksa         ###   ########.fr       */
+/*   Updated: 2024/06/19 19:09:11 by healeksa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,4 +22,6 @@ void	init_struct(t_game *game)
 	game->player_steps = 0;
 	game->move_str = ft_strdup("0");
 	game->player_flag = RIGHT_KEY;
+	game->enemy_flag = 1;
+	game->frame = 0;
 }
