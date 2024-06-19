@@ -6,13 +6,13 @@
 /*   By: healeksa <healeksa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/16 21:13:06 by healeksa          #+#    #+#             */
-/*   Updated: 2024/06/19 19:08:39 by healeksa         ###   ########.fr       */
+/*   Updated: 2024/06/19 20:46:13 by healeksa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void	player_directon(t_game *game, int i, int j, char sprite)
+void	player_directon(t_game *game, int i, int j)
 {
 	if (game->player_flag == RIGHT_KEY)
 		mlx_put_image_to_window(game->mlx_ptr, game->win_ptr,
@@ -28,7 +28,7 @@ void	player_directon(t_game *game, int i, int j, char sprite)
 			game->img.player_down, j * SPRITE_WIDTH, i * SPRITE_HEIGHT);
 }
 
-void	exit_direction(t_game *game, int i, int j, char sprite)
+void	exit_direction(t_game *game, int i, int j)
 {
 	mlx_put_image_to_window(game->mlx_ptr, game->win_ptr, game->img.exit, j
 		* SPRITE_WIDTH, i * SPRITE_HEIGHT);
@@ -46,7 +46,7 @@ void	exit_direction(t_game *game, int i, int j, char sprite)
 			game->img.player_down, j * SPRITE_WIDTH, i * SPRITE_HEIGHT);
 }
 
-static void	enemy(t_game *game, int i, int j, char sprite)
+static void	enemy(t_game *game, int i, int j)
 {
 	if (game->enemy_flag == 1)
 		mlx_put_image_to_window(game->mlx_ptr, game->win_ptr, game->img.enemy1,
@@ -71,9 +71,9 @@ void	draw_element(t_game *game, int i, int j, char sprite)
 		mlx_put_image_to_window(game->mlx_ptr, game->win_ptr, game->img.coin, j
 			* SPRITE_WIDTH, i * SPRITE_HEIGHT);
 	else if (sprite == 'P')
-		player_directon(game, i, j, sprite);
+		player_directon(game, i, j);
 	else if (sprite == 'D')
-		enemy(game, i, j, sprite);
+		enemy(game, i, j);
 	else if (sprite == 'Z')
-		exit_direction(game, i, j, sprite);
+		exit_direction(game, i, j);
 }
