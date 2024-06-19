@@ -6,7 +6,7 @@
 /*   By: healeksa <healeksa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/18 19:41:20 by healeksa          #+#    #+#             */
-/*   Updated: 2024/06/18 22:55:17 by healeksa         ###   ########.fr       */
+/*   Updated: 2024/06/19 16:51:40 by healeksa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,9 @@
 void	enemy_act(t_game *game)
 {
 	ft_free((void *)&game->move_str);
-	ft_putstr_fd("\033[0;31m", 2);
-	ft_putendl_fd("You Lose!", 0);
-	ft_putstr_fd("\033[0m", 2);
+	ft_putstr_fd("\033[0;31m", 1);
+	ft_putendl_fd("You Lose!", 1);
+	ft_putstr_fd("\033[0m", 1);
 	close_game(game);
 }
 
@@ -45,9 +45,9 @@ void	exit_act(int x, int y, t_game *game)
 	if (game->coin == 0)
 	{
 		ft_free((void *)&game->move_str);
-		ft_putstr_fd("\033[0;32m", 2);
-		ft_putendl_fd("You Win!", 0);
-		ft_putstr_fd("\033[0m", 2);
+		ft_putstr_fd("\033[0;32m", 1);
+		ft_putendl_fd("You Win!", 1);
+		ft_putstr_fd("\033[0m", 1);
 		close_game(game);
 	}
 	game->game_map[game->player_x][game->player_y] = '0';
