@@ -24,12 +24,14 @@ RESET = \x1b[0m
 
 all: $(NAME)
 
+bonus: $(NAME)
+
 $(OBJ_DIR): libs
 	@mkdir -p $(OBJ_DIR)
 
 libs:
 	@make -C $(LIBFT)
-# @make -C $(MLX_LIB)
+	@make -C $(MLX_LIB)
 
 $(NAME): $(OBJ_DIR) $(OBJ) Makefile $(HEADER)
 	@$(CC) $(CFLAGS) $(INCLUDES) $(LIBFLAGS) $(MLXFLAGS) $(OBJ) -o $(NAME)
