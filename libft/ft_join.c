@@ -6,7 +6,7 @@
 /*   By: healeksa <healeksa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/27 19:00:17 by healeksa          #+#    #+#             */
-/*   Updated: 2024/06/02 22:39:01 by healeksa         ###   ########.fr       */
+/*   Updated: 2024/06/20 18:35:18 by healeksa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ char	*ft_join(char *s1, char const *s2)
 		s1[0] = '\0';
 	}
 	res = ft_strjoin(s1, s2);
-	ft_free((void *)&s1);
+	if (s1)
+		ft_free((void *)&s1);
 	return (res);
 }
